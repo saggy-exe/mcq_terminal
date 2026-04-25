@@ -3,4 +3,6 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+week1_env/
+
 __init__.py
