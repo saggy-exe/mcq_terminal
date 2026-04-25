@@ -9,5 +9,7 @@ def display_leaderboard(file_path):
         print("Leaderboard: ")
         for name, score in top_3:
             print(f"{name} : {score}")
-    except (FileNotFoundError,  json.JSONDecodeError):
+    except (FileNotFoundError):
+        print("File not found")
+    except (json.JSONDecodeError):
         print("No past records present")
