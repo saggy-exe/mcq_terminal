@@ -1,8 +1,22 @@
-{
-  "Abc": 4,
-  "Xyz": 10,
-  "BCD": 8,
-  "AAA": 9,
-  "Naa": 7,
-  "sdfs": 10
-}
+[
+  {
+    "name": "xyz",
+    "score": 7,
+    "timestamp": "26/04/2026 at 04:21:46 PM"
+  },
+  {
+    "name": "abc",
+    "score": 2,
+    "timestamp": "26/04/2026 at 04:22:45 PM"
+  },
+  {
+    "name": "def",
+    "score": 10,
+    "timestamp": "26/04/2026 at 04:23:43 PM"
+  },
+  {
+    "name": "lmn",
+    "score": 10,
+    "timestamp": "26/04/2026 at 04:24:56 PM"
+  }
+]

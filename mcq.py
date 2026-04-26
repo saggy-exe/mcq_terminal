@@ -1,5 +1,6 @@
 import os
 import json
+import datetime
 from questions import question_list
 from quiz_logic import start_quiz
 from view_leaderboard import display_leaderboard
@@ -17,25 +18,28 @@ def main():
     paper = question_list()
 
     score = start_quiz(paper)
-    percentage = score * 10
-    print(f"Score: {score}/10")
-    print(f"Accuracy: {percentage}%")
 
-    data = {name: score}
+    timestamp = datetime.datetime.now()
+    timestamp = datetime.datetime.strftime(timestamp, "%d/%m/%Y at %I:%M:%S %p")
+    # print(f"Score: {score}/10")
+    # print(f"Accuracy: {percentage}%")
+
+    print(f"{name} scored {score}/10 on {timestamp}")
+
+    data = {"name": name, "score": score, "timestamp": timestamp}
     
 
 
-    old_data = dict()
     try:
         with open(file_path, "r") as f:
             old_data = json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
-        old_data = {}
+        old_data = []
 
-    new_data = old_data | data
+    old_data.append(data)
     
     with open(file_path, "w") as f:
-        json.dump(new_data, f, indent=2)
+        json.dump(old_data, f, indent=2)
     
     display_leaderboard(file_path)
 

@@ -3,12 +3,21 @@ def display_leaderboard(file_path):
     try:
         with open(file_path, "r") as f:
             scores = json.load(f)
-        sorted_scores = sorted(scores.items(), key=lambda x: x[1], reverse=True)
+        # sorted_scores = sorted(scores.items(), key=lambda x: x[1], reverse=True)
+        scores.sort(
+            key=lambda x: (-x["score"], x["timestamp"])
+        )
 
-        top_3 = sorted_scores[:3]
+        sorted_scores = scores
+
         print("Leaderboard: ")
-        for name, score in top_3:
-            print(f"{name} : {score}")
+        i=0
+        for entry in sorted_scores:
+            if i>2:
+                break
+            print(f"{entry["name"]} scored {entry["score"]}/10 on {entry["timestamp"]}")
+            i+=1
+            
     except (FileNotFoundError):
         print("File not found")
     except (json.JSONDecodeError):
